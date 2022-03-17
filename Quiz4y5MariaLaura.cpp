@@ -17,17 +17,19 @@ int costominimo(int N, int M, int x[], int y[],int largox, int largoy){
 	
 	for(int i=0;i<(largox+largoy);i++){
 		
-		if(x[posX]>=y[posY]){ //cortar en x
+		if((x[posX]>=y[posY]) && (posX<(N-1))){ //cortar en x
+			//cout<<"posX: "<<x[posX]<<endl;
 			costmin=costmin + (x[posX]*(posY+1));//(posY+1) son las piezas en y
 			posX++;
 		}
 		else{ //cortar en y
+			//cout<<"posY: "<<y[posY]<<endl;
 			costmin=costmin + (y[posY]*(posX+1));//(posX+1) son las piezas en x
 			posY++;
 		}
 	}
 	
-	cout<<"\nCosto minimo: "<<costmin<<endl;
+	cout<<"\nCosto minimo de corte: "<<costmin<<endl;
 	return costmin;
 		
 }
@@ -39,10 +41,12 @@ las variables necesarias para resolver el algoritmo
 se pide el valor de N,M,Array x y Array y. 
 La cantidad de elementos en X debe ser igual a N-1
 La cantidad de elementos en Y debe ser igual a M-1*/
-	
-	int N=6;
-	int M=4;
-	int x[]={2,1,3,1,4};//Horizontales 
+
+	//int x[]={2};//Horizontales 
+    //int y[]={1};//Verticales
+	//int x[]={5,2,6,3,8,7};//Horizontales 
+    //int y[]={1,3,2,1};//Verticales
+    int x[]={2,1,3,1,4};//Horizontales 
     int y[]={4,1,2};//Verticales
     
     int largox = sizeof(x) / sizeof(x[0]);
@@ -50,19 +54,21 @@ La cantidad de elementos en Y debe ser igual a M-1*/
     sort(x, x + largox, greater<int>());
     sort(y, y + largoy, greater<int>());
     
-    /*cout<<"N: "<<N<<endl;
-    cout<<"M: "<<M<<endl;
+    
+    /*
     cout << "Horizontales x: ";
-    for (int i = 0; i < largo1; i++)
+    for (int i = 0; i < largox; i++)
         cout << x[i] << " ";
         
     cout << "\nVerticales y: ";
-    for (int i = 0; i < largo2; i++){
+    for (int i = 0; i < largoy; i++){
 	
     	cout << y[i] << " ";
-	} */
+   	} 
+	cout <<"Lx: "<<largox<<"  Ly: "<<largoy<<endl;	
+	*/
 	
-	costominimo(N,M,x,y,largox,largoy); 
+	costominimo(6,4,x,y,largox,largoy); 
     
   	return 0;
 
