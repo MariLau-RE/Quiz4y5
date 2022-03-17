@@ -3,40 +3,33 @@
 using namespace std;
 
 
-int costo(int N, int M, int x[], int y[],int largo1, int largo2){
+int costominimo(int N, int M, int x[], int y[],int largox, int largoy){
 	
-	int banderaX=0;
-	int banderaY=0;
+	int posX=0;
+	int posY=0;
 	int costmin=0;
 	
-	if(largo1!=(N-1) || largo2!=(M-1)){
+	if(largox!=(N-1) || largoy!=(M-1)){
 		cout<<"Input invalido"<<endl;
-		cout<<"La lista supera el limite permitido."<<endl;
+		cout<<"Las listas superan los limites permitidos."<<endl;
 		return 0;
 	}
-
 	
-	for(int i=0;i<(largo1+largo2);i++){
+	for(int i=0;i<(largox+largoy);i++){
 		
-		if(x[banderaX]>y[banderaY]){
-			//cortar en x
-			
-			costmin=costmin + (x[banderaX]*(banderaY+1));
-			banderaX++;
-			
+		if(x[posX]>=y[posY]){ //cortar en x
+			costmin=costmin + (x[posX]*(posY+1));//(posY+1) son las piezas en y
+			posX++;
 		}
-		else{
-			//cortar en y
-			
-			costmin=costmin + ( y[banderaY]*(banderaX+1));
-			banderaY++;
+		else{ //cortar en y
+			costmin=costmin + (y[posY]*(posX+1));//(posX+1) son las piezas en x
+			posY++;
 		}
 	}
+	
 	cout<<"\nCosto minimo: "<<costmin<<endl;
 	return costmin;
-	
-
-	
+		
 }
 
 int main(){
@@ -46,18 +39,16 @@ las variables necesarias para resolver el algoritmo
 se pide el valor de N,M,Array x y Array y. 
 La cantidad de elementos en X debe ser igual a N-1
 La cantidad de elementos en Y debe ser igual a M-1*/
-
 	
 	int N=6;
 	int M=4;
 	int x[]={2,1,3,1,4};//Horizontales 
     int y[]={4,1,2};//Verticales
     
-    
-    int largo1 = sizeof(x) / sizeof(x[0]);
-    int largo2 = sizeof(y) / sizeof(y[0]);    
-    sort(x, x + largo1, greater<int>());
-    sort(y, y + largo2, greater<int>());
+    int largox = sizeof(x) / sizeof(x[0]);
+    int largoy = sizeof(y) / sizeof(y[0]);    
+    sort(x, x + largox, greater<int>());
+    sort(y, y + largoy, greater<int>());
     
     /*cout<<"N: "<<N<<endl;
     cout<<"M: "<<M<<endl;
@@ -71,10 +62,8 @@ La cantidad de elementos en Y debe ser igual a M-1*/
     	cout << y[i] << " ";
 	} */
 	
-	costo(N,M,x,y,largo1,largo2); 
+	costominimo(N,M,x,y,largox,largoy); 
     
   	return 0;
 
 }
-
-
