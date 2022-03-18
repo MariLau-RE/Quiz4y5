@@ -42,10 +42,15 @@ se pide el valor de N,M,Array x y Array y.
 La cantidad de elementos en X debe ser igual a N-1
 La cantidad de elementos en Y debe ser igual a M-1*/
 
+	//Se prueba con N=2 y M=2
 	//int x[]={2};//Horizontales 
     //int y[]={1};//Verticales
+    
+    //Se prueba con N=7 y M=5
 	//int x[]={5,2,6,3,8,7};//Horizontales 
     //int y[]={1,3,2,1};//Verticales
+    
+    //Se prueba con N=6 y M=4
     int x[]={2,1,3,1,4};//Horizontales 
     int y[]={4,1,2};//Verticales
     
